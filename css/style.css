@@ -1,0 +1,52 @@
+body {
+  background-image: url('../vector.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  
+}
+
+header {
+  height: 60px;
+  background-color: #ebe5e5;
+}
+
+section {
+  margin: 0 15px;
+  padding: 0 50px;
+}
+
+.main {
+  margin-top: 150px;
+}
+
+p.logo {
+  margin-left: 15px;
+  padding-left: 50px;
+  color: #aa3511;
+}
+
+div.content {
+  width: 400px;
+}
+
+div.content .content-bold {
+  font-size: 25px;
+  color: #a83c1b;
+}
+
+div.content .content-light {
+  font-size: 18px;
+  text-decoration: italic;
+  color: #a83c1b;
+}
+
+.nav .nav-item a {
+  color: #a83c1b;
+}
+
+.btn {
+  padding: 10px 20px;
+  background: #a8948e;
+  color: #ffffff;
+  border-radius: 0;
+}
