@@ -49,3 +49,19 @@ h1{
     background-color: rgb(255, 255, 255);
     color: rgb(97, 97, 97) !important;
 }
+
+/* FORMS */
+form > input{
+    background-color: rgba(0, 0, 0, .3)
+}
+.user_card{
+    /* background-color: rgba(46, 2, 24, 0.3); */
+    padding: 5%;
+}
+.t-sign-up {
+    color: #fff;
+}
+.t-sign-up a{
+    font-weight: bold;
+    color: rgb(14, 15, 15)
+}
