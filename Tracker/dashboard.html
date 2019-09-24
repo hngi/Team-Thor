@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Thor Tracker</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+    <style>
+        body {
+            background-image: url("https://res.cloudinary.com/crea6ix/image/upload/v1569248264/FBF1E091-9110-4861-A2F2-C9DF76D54A08_ibjzgf.jpg");
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: relative;
+            height: 100%;
+            width: 100%;
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: bold;
+        }
+
+        .col-12 {
+            font-size: 40px;
+            text-align: center;
+        }
+
+        .input-group-append {
+            display: inline;
+        }
+    </style>
+    <nav class="nav">
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                Profile name
+            </button>
+
+        </div>
+    </nav>
+
+    <section class="container-fluid">
+        <div class="col-12"> Checklist </div>
+        <div class="form-row">
+            <div class="form-group mb-3">
+                <label for="myInput">Please add a goal and the relevant tasks underneath it seperated by a comma
+                    (,)</label>
+                <input type="text" class="form-control" placeholder="Add a goal" aria-label="Goal input"
+                    aria-describedby="button-addon1" id="myInput">
+                <div class="input-group-append">
+                    <button class="btn btn-primary" type="submit" id="button-addon1" onclick="newGoal()">Add</button>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <ul id="goalList">
+
+            </ul>
+        </div>
+
+    </section>
+    <script>
+        $('.dropdown-toggle').dropdown();
+
+        function newGoal() {
+            var arr = document.getElementById("myInput").value;
+            var arr1 = arr.split(',');
+            if (arr1.length <= 1) {
+                alert("please add goals and tasks separeted by a comma");
+                document.getElementById("myInput").value = "";
+            }
+            var li = document.createElement('li');
+            var goalTitle = document.createTextNode(arr1[0]);
+            li.appendChild(goalTitle);
+            document.getElementById("goalList").appendChild(li);
+            var goalBody = document.createElement('ul');
+            li.appendChild(goalBody);
+            for (var i = 1; i < arr1.length; i++) {
+                var tasks = document.createElement('li');
+                var goalTasks = document.createTextNode(arr1[i]);
+                tasks.appendChild(goalTasks);
+                goalBody.appendChild(tasks);
+            }
+            document.getElementById("myInput").value = "";
+
+        }
+
+    </script>
+    <script src="./js/jquery-3.4.1.min.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+    <script src="./js/script.js"></script>
+</body>
+
+</html>
