@@ -1,0 +1,67 @@
+html{
+    scroll-behavior: smooth;    
+}
+body{
+    font-family: 'Merriweather', serif;
+}
+#main{
+    height: 120vh;
+    background-image: url('/assets/bcgr.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position-y: center;
+    background-position-x: center;
+    transition: all .2s ease-in;
+}
+.main-text{
+    margin-top: 10%;
+}
+.main-text p{
+    font-size: 1.2rem;
+    font-style: italic;
+    margin-top: 3px;
+}
+h1{
+    font-size: 1.9rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+/* NAVBAR */
+.navbar{
+    background-color: rgb(119, 117, 117);
+
+}
+.nav-item .nav-link{
+    font-weight: 500;
+}
+.g-s{
+    border: 2px solid rgb(85, 85, 85);
+    background-color: rgb(85, 85, 85);
+    border-radius: 8px;
+    font-weight: 500;
+    font-size: 1.2rem;
+    color: #fff !important;
+    transition: all .3s ease-in;
+}
+.g-s:hover{
+    border: 2px solid rgb(253, 253, 253);
+    background-color: rgb(255, 255, 255);
+    color: rgb(97, 97, 97) !important;
+}
+
+/* FORMS */
+form > input{
+    background-color: rgba(0, 0, 0, .3)
+}
+.user_card{
+    /* background-color: rgba(46, 2, 24, 0.3); */
+    padding: 5%;
+}
+.t-sign-up {
+    color: #fff;
+}
+.t-sign-up a{
+    font-weight: bold;
+    color: rgb(14, 15, 15)
+}
