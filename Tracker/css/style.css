@@ -65,3 +65,16 @@ form > input{
     font-weight: bold;
     color: rgb(14, 15, 15)
 }
+
+
+/* TRACKER */
+
+ul.goals li{
+    font-weight: 700;
+    background: orange;
+    padding: 20px;
+    margin: 5px;
+    cursor: pointer;
+    text-transform: uppercase;
+    list-style-type: none;
+}
