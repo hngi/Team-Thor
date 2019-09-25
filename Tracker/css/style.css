@@ -5,14 +5,15 @@ body{
     font-family: 'Merriweather', serif;
 }
 #main{
-    height: 120vh;
-    background-image: url('/assets/bcgr.png');
+    height: 100vh;
+    background-image: linear-gradient(to bottom, rgba(77, 52, 52, 0.5), rgba(77, 52, 52, 0.5)), url('../assets/bcgr.png');
     background-size: 100% 100%;
     background-repeat: no-repeat;
     background-position-y: center;
     background-position-x: center;
     transition: all .2s ease-in;
 }
+
 .main-text{
     margin-top: 10%;
 }
@@ -63,5 +64,52 @@ form > input{
 }
 .t-sign-up a{
     font-weight: bold;
-    color: rgb(14, 15, 15)
+    color: rgb(14, 15, 15);
+    cursor: pointer;
+}
+
+@media(max-width: 575px){
+   .navbar-brand{
+       font-size: 15px
+   }
+   .navbar-brand img{
+       height: 50px;
+       width: 50px;
+   }
+   
+   .row h1{
+       font-size: 23px;
+   }
+   .row p{
+    font-size: 20px;
+   }
+   .btn{
+    width: 200px;
+    font-size: 17px;
+    padding: 3px !important;
+    margin: 2px !important;
+   }
+}
+
+@media(max-width: 360px ){ 
+   .navbar-brand{
+       font-size: 10px
+   }
+   .navbar-brand img{
+       height: 50px;
+       width: 50px;
+   }
+   .row h1{
+       font-size: 14px;
+   }
+   .row p{
+    font-size: 12px;
+    align-content: center !important
+   }
+   .btn{
+    width: 200px;
+    font-size: 12px;
+    padding: 3px !important;
+    margin: 2px !important;
+   }
 }
