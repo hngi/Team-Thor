@@ -1,0 +1,6 @@
+# Referenced at D:\HNG 6\Mobile Task 2\Team-Thor\solar_power_calculator\build\app\intermediates\merged_manifests\release\AndroidManifest.xml:17
+-keep class android.support.v4.app.CoreComponentFactory { <init>(); }
+# Referenced at D:\HNG 6\Mobile Task 2\Team-Thor\solar_power_calculator\build\app\intermediates\merged_manifests\release\AndroidManifest.xml:22
+-keep class com.example.solar_power_calculator.MainActivity { <init>(); }
+# Referenced at D:\HNG 6\Mobile Task 2\Team-Thor\solar_power_calculator\build\app\intermediates\merged_manifests\release\AndroidManifest.xml:17
+-keep class io.flutter.app.FlutterApplication { <init>(); }
