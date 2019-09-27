@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Thor Tracker</title>
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,400i,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <section id="main">
+        <div class="container-fuid mx-0">
+          <nav class="navbar navbar-expand-lg navbar-light bg-light container-fluid px-5">
+            <a class="navbar-brand" href="index.html"><img style= "width: 70px" src="./assets/logo.png
+              "> <strong>Team Thor Goal Tracker</strong></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+          
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav ml-auto">
+                <li class="nav-item mx-2">
+                  <a class="nav-link g-s py-2 px-4" href="sign-up.html">Get Started</a>
+                </li>
+                <li class="nav-item mx-2">
+                  <a class="nav-link" href="login.html">Login</a>
+                </li>
+                <li class="nav-item mx-2">
+                  <a class="nav-link" href="#">About App</a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+        </div>
+
+        <div class="container-fluid mt-5">
+            <div class="row">
+                <div class="col-4">
+
+                    <div class="input-group mb-3">
+                        <input id="goal-input" type="text" class="form-control" placeholder="Emter a task">
+                    </div>
+                    <button class="btn btn-primary px-2 " id="add-goal">Add Goal</button> 
+                    <ul id="goals"></ul>
+                </div>
+
+                <div class="col-4 todo" id="todo"> 
+                    <form id="todoForm"> 
+                    <input id="todoInput" type="text" class="form-control " placeholder="Enter goals for your task">
+                    <button class="btn btn-primary px-2 d-none my-4" id="todoBtn">Add Todo</button> 
+                    </form>
+                    <div id="c-t">
+                      <span id="current-task"></span>
+                      <ul class="d-block goals" id="task">
+                        </ul> 
+                    </div>
+                       
+                </div>
+                <div class="col-4">
+                  <span id="progress"></span>
+                </div>
+            </div>
+
+          
+    </section>
+    
+
+    <script src="./js/jquery-3.4.1.min.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+    <script src="./js/script.js"></script>
+</body>
+</html>
