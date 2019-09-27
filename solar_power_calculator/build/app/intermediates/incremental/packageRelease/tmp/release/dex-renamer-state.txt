@@ -1,4 +1,4 @@
-#Thu Sep 26 18:05:26 WAT 2019
+#Fri Sep 27 22:13:04 WAT 2019
 base.0=D\:\\HNG 6\\Mobile Task 2\\Team-Thor\\solar_power_calculator\\build\\app\\intermediates\\transforms\\r8\\release\\0\\classes.dex
 path.0=classes.dex
 renamed.0=classes.dex
