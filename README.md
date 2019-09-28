@@ -24,11 +24,13 @@ Two buttons on the home screen/page are 'get started' and 'learn more'
    
    
    Calculation page displays Two options...
-   1.Calculate power consumption button(for those who don't know how much power they consume)
-   2.Calculated need solar power
+   1.Generate solar power report 
+   2.calculate energy usage per day
       *see image below*...
       
-      
+      <img src="google_pixel_2_-_2.png"
+     alt="Markdown Monster icon"
+     style="float: left; margin-right: 10px;" />
       
    Calculate power consumption page
    Opens page to list gadgets and energy rating.
