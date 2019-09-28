@@ -140,3 +140,9 @@ label button{
   color: #555;
 }
 
+/*  Media Queries*/
+@media (max-width-320px)
+    display-4{ 
+        font-size: 50%;
+    }
+}
