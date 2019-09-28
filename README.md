@@ -27,20 +27,18 @@ Two buttons on the home screen/page are 'get started' and 'learn more'
    1.Generate solar power report 
    2.calculate energy usage per day
       *see image below*...
+      ![Display page](SPC0.PNG)
       
-      <img src="google_pixel_2_-_2.png"
-     alt="Markdown Monster icon"
-     style="float: left; margin-right: 10px;" />
       
    Calculate power consumption page
    Opens page to list gadgets and energy rating.
    Gadget.                   Rating.        Hours per day
    ________                 ________        __________
       
-   Calculate button.
-   Calculate needed solar power button
+   Calculate button
+    Power usage Result
        *see image below*...
-         
+         ![Usage page](SPL1.PNG)
          
          Calculate needed solar power page.
    Displays form
@@ -51,4 +49,5 @@ Two buttons on the home screen/page are 'get started' and 'learn more'
    Solar panel capacity________
    Hours of daily sunlight _______
        *see image below*...
+       ![Display page](SPC2.PNG)
  
