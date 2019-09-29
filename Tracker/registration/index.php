@@ -26,7 +26,7 @@
     <section>
         <div class="container-fuid mx-0">
           <nav class="navbar navbar-expand-lg navbar-light bg-light container-fluid px-5">
-            <a class="navbar-brand" href="index.html"><img src="../assets/logo.png
+            <a class="navbar-brand" href="../index.html"><img src="../assets/logo.png
               " style= "width: 70px"><strong>Team Thor Goal Tracker</strong></a>
 							<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           			<span class="navbar-toggler-icon"><i class="fa fas fa-bars fa-2x"></i></span>
