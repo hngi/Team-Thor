@@ -62,7 +62,7 @@
 
         <div class="container-fluid mt-5">
             <div class="row">
-                <div class="col-4 col-sm-12 col-md-4">
+                <div class="col-4 col-sm-12 col-md-12">
 
                     <div class="input-group mb-3">
                         <input id="goal-input" type="text" class="form-control" placeholder="Enter a task">
@@ -71,7 +71,7 @@
                     <ul id="goals"></ul>
                 </div>
 
-                <div class="col-4 todo col-sm-12 col-md-4" id="todo"> 
+                <div class="col-4 todo col-sm-12 col-md-6" id="todo"> 
                     <form id="todoForm"> 
                     <input id="todoInput" type="text" class="form-control " placeholder="Enter goals for your task">
                     <button class="btn btn-primary px-2 d-none my-4" id="todoBtn">Add Todo</button> 
@@ -80,7 +80,7 @@
                     <ul class="d-block goals" id="task">
                       </ul>    
                 </div>
-                <div class="col-4 text-center col-sm-12 col-md-4">
+                <div class="col-4 text-center col-sm-12 col-md-6">
                   <h3>Goal Progress</h3>
                   <span id="progress"></span>
                 </div>
