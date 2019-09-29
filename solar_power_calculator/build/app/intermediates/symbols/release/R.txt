@@ -58,6 +58,7 @@ int drawable notification_template_icon_bg 0x7f040009
 int drawable notification_template_icon_low_bg 0x7f04000a
 int drawable notification_tile_bg 0x7f04000b
 int drawable notify_panel_notification_icon_bg 0x7f04000c
+int drawable solarlogo 0x7f04000d
 int id action_container 0x7f050000
 int id action_divider 0x7f050001
 int id action_image 0x7f050002

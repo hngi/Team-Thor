@@ -17,6 +17,7 @@ class _EnergyConsumedPageState extends State<EnergyConsumedPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xFFFAF9F9),
       body: ScopedModelDescendant(
           builder: (BuildContext context, Widget child, EnergyModel model) {
         return SingleChildScrollView(
@@ -25,10 +26,12 @@ class _EnergyConsumedPageState extends State<EnergyConsumedPage> {
               Container(
                 alignment: Alignment.topLeft,
                 margin: EdgeInsets.only(left: 24, top: 44),
-                child: Icon(Icons.arrow_back),
-              ),
-              SizedBox(
-                height: 13,
+                child: IconButton(
+                  alignment: Alignment.topLeft,
+                  icon: Icon(Icons.arrow_back),
+                  padding: EdgeInsets.all(0),
+                  onPressed: () => Navigator.pop(context),
+                ),
               ),
               Container(
                 alignment: Alignment.topLeft,
@@ -69,6 +72,9 @@ class _EnergyConsumedPageState extends State<EnergyConsumedPage> {
                 height: 30,
               ),
               EnergyConsumedForm(update: update),
+              SizedBox(
+                height: 20,
+              )
             ],
           ),
         );

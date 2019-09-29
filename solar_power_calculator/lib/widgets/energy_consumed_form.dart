@@ -23,24 +23,31 @@ class _EnergyConsumedFormState extends State<EnergyConsumedForm> {
   };
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
+  final focusNodePower = FocusNode();
+  final focusNodeQuantity = FocusNode();
+  final focusNodeHours = FocusNode();
+
   Widget _buildEquipmentField() {
     return TextFormField(
+      textInputAction: TextInputAction.next,
+      onEditingComplete: () =>
+          FocusScope.of(context).requestFocus(focusNodePower),
       style: TextStyle(
         fontSize: 16,
         color: Color(0xFF042C5C),
         fontWeight: FontWeight.w600,
       ),
       decoration: InputDecoration(
-        hintText: 'Equipments',
+        hintText: 'Appliances',
         hintStyle: TextStyle(
           fontSize: 16,
-          fontWeight: FontWeight.w700,
+          fontWeight: FontWeight.w600,
           color: Color(0xFF77869E),
         ),
-        labelText: 'Equipments',
+        labelText: 'Appliances',
         labelStyle: TextStyle(
           fontSize: 15,
-          fontWeight: FontWeight.w700,
+          fontWeight: FontWeight.w600,
         ),
       ),
       validator: (String value) {
@@ -56,6 +63,10 @@ class _EnergyConsumedFormState extends State<EnergyConsumedForm> {
 
   Widget _buildPowerRatingField() {
     return TextFormField(
+      focusNode: focusNodePower,
+      onEditingComplete: () =>
+          FocusScope.of(context).requestFocus(focusNodeQuantity),
+      textInputAction: TextInputAction.next,
       style: TextStyle(
         fontSize: 16,
         color: Color(0xFF042C5C),
@@ -63,21 +74,33 @@ class _EnergyConsumedFormState extends State<EnergyConsumedForm> {
       ),
       keyboardType: TextInputType.numberWithOptions(),
       decoration: InputDecoration(
+        suffixText: 'W',
+        suffixStyle: TextStyle(
+          fontSize: 16,
+          fontWeight: FontWeight.w600,
+          color: Color(0xFF77869E),
+        ),
         hintText: 'Power Rating',
         hintStyle: TextStyle(
           fontSize: 16,
-          fontWeight: FontWeight.w700,
+          fontWeight: FontWeight.w600,
           color: Color(0xFF77869E),
         ),
         labelText: 'Power Rating',
         labelStyle: TextStyle(
           fontSize: 15,
-          fontWeight: FontWeight.w700,
+          fontWeight: FontWeight.w600,
         ),
       ),
       validator: (String value) {
-        if (value.isEmpty || !(num.parse(value) is num)) {
+        if (!RegExp(r'^([.]\d+|\d+[.]?\d*)$').hasMatch(value) || double.parse(value) <= 0) {
           return 'Please enter a valid input';
+        }
+        else if(double.parse(value) > 9999) {
+          return 'Please enter a value less than 10000';
+        }
+        else if(value.length > 6) {
+          return 'Please enter a value with a lesser decimal place';
         }
       },
       onSaved: (String value) {
@@ -88,6 +111,11 @@ class _EnergyConsumedFormState extends State<EnergyConsumedForm> {
 
   Widget _buildQuantityField() {
     return TextFormField(
+      focusNode: focusNodeQuantity,
+      onEditingComplete: () {
+        FocusScope.of(context).requestFocus(focusNodeHours);
+      },
+      textInputAction: TextInputAction.next,
       style: TextStyle(
         fontSize: 16,
         color: Color(0xFF042C5C),
@@ -98,18 +126,21 @@ class _EnergyConsumedFormState extends State<EnergyConsumedForm> {
         hintText: 'Quantity',
         hintStyle: TextStyle(
           fontSize: 16,
-          fontWeight: FontWeight.w700,
+          fontWeight: FontWeight.w600,
           color: Color(0xFF77869E),
         ),
         labelText: 'Quantity',
         labelStyle: TextStyle(
           fontSize: 15,
-          fontWeight: FontWeight.w700,
+          fontWeight: FontWeight.w600,
         ),
       ),
       validator: (String value) {
-        if (value.isEmpty || !(int.parse(value) is int)) {
+        if (!RegExp(r'^\d+$').hasMatch(value) || double.parse(value) <= 0) {
           return 'Please enter a valid input';
+        }
+        else if(int.parse(value) >= 100) {
+          return 'Please enter a value less than 100';
         }
       },
       onSaved: (String value) {
@@ -120,6 +151,7 @@ class _EnergyConsumedFormState extends State<EnergyConsumedForm> {
 
   Widget _buildHoursUsedField() {
     return TextFormField(
+      focusNode: focusNodeHours,
       style: TextStyle(
         fontSize: 16,
         color: Color(0xFF042C5C),
@@ -127,21 +159,30 @@ class _EnergyConsumedFormState extends State<EnergyConsumedForm> {
       ),
       keyboardType: TextInputType.numberWithOptions(),
       decoration: InputDecoration(
+        suffixText: 'Hrs',
+        suffixStyle: TextStyle(
+          fontSize: 16,
+          fontWeight: FontWeight.w600,
+          color: Color(0xFF77869E),
+        ),
         hintText: 'Hours Used',
         hintStyle: TextStyle(
           fontSize: 16,
-          fontWeight: FontWeight.w700,
+          fontWeight: FontWeight.w600,
           color: Color(0xFF77869E),
         ),
         labelText: 'Hours Used',
         labelStyle: TextStyle(
           fontSize: 15,
-          fontWeight: FontWeight.w700,
+          fontWeight: FontWeight.w600,
         ),
       ),
       validator: (String value) {
-        if (value.isEmpty || !(num.parse(value) is num)) {
+        if (!RegExp(r'^([.]\d+|\d+[.]?\d*)$').hasMatch(value) || double.parse(value) <= 0) {
           return 'Please enter a valid input';
+        }
+        else if(double.parse(value) > 24) {
+          return 'Please enter a value less than or equal to 24';
         }
       },
       onSaved: (String value) {
@@ -161,6 +202,7 @@ class _EnergyConsumedFormState extends State<EnergyConsumedForm> {
                 widget.update();
               });
             },
+            borderSide: BorderSide(color: Color(0xFF6737EF), width: 1),
             padding: EdgeInsets.symmetric(vertical: 13, horizontal: 56),
             color: Color(0xFF6737EF),
             splashColor: Color(0xFF6737EF),
@@ -193,6 +235,14 @@ class _EnergyConsumedFormState extends State<EnergyConsumedForm> {
                 builder: (BuildContext context) => EnergyInfoPage(),
               ),
             );
+          } else {
+            Scaffold.of(context).showSnackBar(SnackBar(
+              content: Text(
+                'Complete the form and add an appliance before proceeding.',
+                style: TextStyle(fontSize: 12),
+              ),
+              backgroundColor: Theme.of(context).primaryColor,
+            ));
           }
         },
         padding: EdgeInsets.symmetric(vertical: 13, horizontal: 38),
@@ -220,7 +270,6 @@ class _EnergyConsumedFormState extends State<EnergyConsumedForm> {
               hoursUsedPerDay: _formData['Hours Used']),
         );
       });
-      print('Submitted');
     }
   }
 
@@ -229,17 +278,14 @@ class _EnergyConsumedFormState extends State<EnergyConsumedForm> {
     return ScopedModelDescendant(
       builder: (BuildContext context, Widget child, EnergyModel model) {
         return Container(
-          margin: EdgeInsets.only(right: 24, left: 24),
+          margin: EdgeInsets.symmetric(horizontal: 24),
           child: Form(
             key: _formKey,
             child: Column(
               children: <Widget>[
                 _buildEquipmentField(),
-                SizedBox(height: 5),
                 _buildPowerRatingField(),
-                SizedBox(height: 5),
                 _buildQuantityField(),
-                SizedBox(height: 5),
                 _buildHoursUsedField(),
                 SizedBox(height: 60),
                 Container(

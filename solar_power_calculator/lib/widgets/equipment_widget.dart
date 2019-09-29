@@ -41,7 +41,7 @@ class _EquipmentWidgetState extends State<EquipmentWidget> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 Text(
-                  widget.equipment,
+                  '${widget.equipment.length > 6 ? widget.equipment[0] + '...' + widget.equipment[widget.equipment.length - 1] : widget.equipment}',
                   style: TextStyle(
                     fontSize: 14,
                     fontWeight: FontWeight.bold,
@@ -70,7 +70,7 @@ class _EquipmentWidgetState extends State<EquipmentWidget> {
             ),
           ),
           Text(
-            '${widget.powerRating > 9999 ? widget.powerRating / 1000 : widget.powerRating}${widget.powerRating > 9999 ? watt[1] : watt[0]}',
+            '${widget.powerRating}W',
             style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
