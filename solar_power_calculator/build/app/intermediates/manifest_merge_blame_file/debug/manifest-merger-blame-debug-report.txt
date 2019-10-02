@@ -30,7 +30,7 @@
 25        android:debuggable="true"
 26        android:icon="@mipmap/ic_launcher"
 26-->D:\HNG 6\Mobile Task 2\Team-Thor\solar_power_calculator\android\app\src\main\AndroidManifest.xml:12:9-43
-27        android:label="solar_power_calculator" >
+27        android:label="Solar Power Calculator" >
 27-->D:\HNG 6\Mobile Task 2\Team-Thor\solar_power_calculator\android\app\src\main\AndroidManifest.xml:11:9-47
 28        <activity
 28-->D:\HNG 6\Mobile Task 2\Team-Thor\solar_power_calculator\android\app\src\main\AndroidManifest.xml:13:9-31:20

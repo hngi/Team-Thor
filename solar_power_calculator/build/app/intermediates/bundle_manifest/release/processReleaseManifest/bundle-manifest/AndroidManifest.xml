@@ -18,7 +18,7 @@
         android:name="io.flutter.app.FlutterApplication"
         android:appComponentFactory="android.support.v4.app.CoreComponentFactory"
         android:icon="@mipmap/ic_launcher"
-        android:label="solar_power_calculator" >
+        android:label="Solar Power Calculator" >
         <activity
             android:name="com.example.solar_power_calculator.MainActivity"
             android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"

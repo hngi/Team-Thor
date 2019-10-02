@@ -302,6 +302,7 @@ public final class R {
     public static final int notification_template_icon_low_bg=0x7f04000a;
     public static final int notification_tile_bg=0x7f04000b;
     public static final int notify_panel_notification_icon_bg=0x7f04000c;
+    public static final int solarlogo=0x7f04000d;
   }
   public static final class id {
     public static final int action_container=0x7f050000;

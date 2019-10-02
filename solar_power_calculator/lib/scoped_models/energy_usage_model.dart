@@ -3,34 +3,7 @@ import 'package:scoped_model/scoped_model.dart';
 import '../models/energy_usage.dart';
 
 class EnergyModel extends Model {
-  List<EnergyUsage> _usages = [
-    EnergyUsage(
-      equipment: "Iron",
-      powerRating: 2500,
-      quantity: 1,
-      hoursUsedPerDay: 2,
-    ),
-    EnergyUsage(
-      equipment: "Bulb",
-      powerRating: 11,
-      quantity: 10,
-      hoursUsedPerDay: 19,
-    ),
-    EnergyUsage(
-      equipment: "Fan",
-      powerRating: 75,
-      quantity: 1,
-      hoursUsedPerDay: 8,
-    ),
-    EnergyUsage(
-      equipment: "Cooker",
-      powerRating: 2000,
-      quantity: 1,
-      hoursUsedPerDay: 8,
-    ),
-    
-
-  ];
+  List<EnergyUsage> _usages = [];
   List get usages => List.from(_usages);
   int _selectedUsageIndex;
   double totalEnergyUsedPerDay = 0;

@@ -139,3 +139,28 @@ label button{
   text-decoration: none;
   color: #555;
 }
+
+
+
+
+/* Media Queries */
+
+/* ABOUT */
+@media (max-width:320px) {
+    .topic{ 
+        font-size: 1.7rem;
+        font-weight: bolder;
+    }  
+    .text {
+        font-size: 1.1rem;
+    }
+    .row {
+        font-size: 1.5rem;
+    }
+
+    /* INDEX */
+    #main{
+        background: none;
+    }
+
+}

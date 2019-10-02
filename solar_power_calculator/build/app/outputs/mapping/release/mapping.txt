@@ -1,7 +1,7 @@
 # compiler: R8
 # compiler_version: 1.5.64
 # min_api: 16
-# pg_map_id: bec8ccd
+# pg_map_id: ce48805
 android.arch.lifecycle.LifecycleObserver -> android.arch.lifecycle.a:
 android.arch.lifecycle.LiveData$ObserverWrapper -> android.arch.lifecycle.b:
 android.arch.lifecycle.ViewModel -> android.arch.lifecycle.c:
@@ -149,24 +149,34 @@ io.flutter.app.FlutterApplication -> io.flutter.app.FlutterApplication:
     android.app.Activity getCurrentActivity() -> a
     void setCurrentActivity(android.app.Activity) -> a
 io.flutter.app.FlutterPluginRegistry -> io.flutter.app.d:
-    java.util.Map mPluginMap -> b
-    java.util.List mUserLeaveHintListeners -> f
-    java.util.List mNewIntentListeners -> e
-    java.util.List mActivityResultListeners -> d
-    java.util.List mRequestPermissionsResultListeners -> c
-    io.flutter.plugin.platform.PlatformViewsController mPlatformViewsController -> a
-    java.util.List mViewDestroyListeners -> g
+    android.content.Context mAppContext -> b
+    java.util.List mRequestPermissionsResultListeners -> f
+    io.flutter.view.FlutterNativeView mNativeView -> c
+    java.util.List mViewDestroyListeners -> j
+    java.util.List mUserLeaveHintListeners -> i
+    java.util.List mNewIntentListeners -> h
+    java.util.List mActivityResultListeners -> g
+    android.app.Activity mActivity -> a
+    java.util.Map mPluginMap -> e
+    io.flutter.plugin.platform.PlatformViewsController mPlatformViewsController -> d
+    android.app.Activity access$000(io.flutter.app.FlutterPluginRegistry) -> a
     void attach(io.flutter.view.FlutterView,android.app.Activity) -> a
     void destroy() -> a
     boolean hasPlugin(java.lang.String) -> a
     boolean onActivityResult(int,int,android.content.Intent) -> a
     boolean onRequestPermissionsResult(int,java.lang.String[],int[]) -> a
     boolean onViewDestroy(io.flutter.view.FlutterNativeView) -> a
+    android.content.Context access$100(io.flutter.app.FlutterPluginRegistry) -> b
     void detach() -> b
     io.flutter.plugin.common.PluginRegistry$Registrar registrarFor(java.lang.String) -> b
+    io.flutter.view.FlutterNativeView access$200(io.flutter.app.FlutterPluginRegistry) -> c
     io.flutter.plugin.platform.PlatformViewsController getPlatformViewsController() -> c
     void onPreEngineRestart() -> d
 io.flutter.app.FlutterPluginRegistry$FlutterRegistrar -> io.flutter.app.d$a:
+    io.flutter.app.FlutterPluginRegistry this$0 -> a
+    io.flutter.plugin.common.BinaryMessenger messenger() -> a
+    android.content.Context context() -> b
+    android.app.Activity activity() -> c
 io.flutter.embedding.android.AndroidKeyProcessor -> b.a.b.a.a:
     io.flutter.embedding.engine.systemchannels.KeyEventChannel keyEventChannel -> a
     int combiningCharacter -> c
@@ -582,6 +592,7 @@ io.flutter.plugin.common.MessageCodec -> b.a.c.a.h:
 io.flutter.plugin.common.MethodCall -> b.a.c.a.i:
     java.lang.Object arguments -> b
     java.lang.String method -> a
+    java.lang.Object argument(java.lang.String) -> a
     java.lang.Object arguments() -> a
 io.flutter.plugin.common.MethodChannel -> b.a.c.a.j:
     io.flutter.plugin.common.MethodCodec codec -> c
@@ -625,6 +636,9 @@ io.flutter.plugin.common.PluginRegistry$ActivityResultListener -> b.a.c.a.l$a:
     boolean onActivityResult(int,int,android.content.Intent) -> a
 io.flutter.plugin.common.PluginRegistry$NewIntentListener -> b.a.c.a.l$b:
 io.flutter.plugin.common.PluginRegistry$Registrar -> b.a.c.a.l$c:
+    io.flutter.plugin.common.BinaryMessenger messenger() -> a
+    android.content.Context context() -> b
+    android.app.Activity activity() -> c
 io.flutter.plugin.common.PluginRegistry$RequestPermissionsResultListener -> b.a.c.a.l$d:
     boolean onRequestPermissionsResult(int,java.lang.String[],int[]) -> a
 io.flutter.plugin.common.PluginRegistry$UserLeaveHintListener -> b.a.c.a.l$e:
@@ -915,6 +929,11 @@ io.flutter.plugin.platform.VirtualDisplayController$OneTimeOnDrawListener$1 -> i
 io.flutter.plugins.GeneratedPluginRegistrant -> b.a.d.a:
     boolean alreadyRegisteredWith(io.flutter.plugin.common.PluginRegistry) -> a
     void registerWith(io.flutter.plugin.common.PluginRegistry) -> b
+io.flutter.plugins.share.SharePlugin -> b.a.d.b.a:
+    io.flutter.plugin.common.PluginRegistry$Registrar mRegistrar -> a
+    void onMethodCall(io.flutter.plugin.common.MethodCall,io.flutter.plugin.common.MethodChannel$Result) -> a
+    void registerWith(io.flutter.plugin.common.PluginRegistry$Registrar) -> a
+    void share(java.lang.String) -> a
 io.flutter.util.PathUtils -> b.a.e.a:
     java.lang.String getCacheDirectory(android.content.Context) -> a
     java.lang.String getFilesDir(android.content.Context) -> b

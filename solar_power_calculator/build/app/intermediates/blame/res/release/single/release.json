@@ -1,5 +1,9 @@
 [
     {
+        "merged": "D:\\HNG 6\\Mobile Task 2\\Team-Thor\\solar_power_calculator\\build\\app\\intermediates\\res\\merged\\release\\drawable_solarlogo.png.flat",
+        "source": "D:\\HNG 6\\Mobile Task 2\\Team-Thor\\solar_power_calculator\\android\\app\\src\\main\\res\\drawable\\solarlogo.png"
+    },
+    {
         "merged": "D:\\HNG 6\\Mobile Task 2\\Team-Thor\\solar_power_calculator\\build\\app\\intermediates\\res\\merged\\release\\drawable_notification_bg_low.xml.flat",
         "source": "C:\\Users\\Vibranium\\.gradle\\caches\\transforms-2\\files-2.1\\eac699f134901d0d2fa5c1a81ade99d0\\support-compat-28.0.0\\res\\drawable\\notification_bg_low.xml"
     },
