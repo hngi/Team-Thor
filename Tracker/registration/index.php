@@ -45,6 +45,9 @@
                 <li class="nav-item mx-2">
                   <a class="nav-link" href="../about-app.html">About App</a>
                 </li>
+		<li class="nav-item mx-2">
+                <a class="nav-link about-btn" href="thorcontact.html">Contact Us</a>
+              </li>
 
                 <!-- logged in user information -->
                 <li class="nav-item mx-2 mt-2 d-flex justify-content-between align-items-center"
