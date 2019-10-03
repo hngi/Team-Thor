@@ -1,12 +1,19 @@
 html{
     scroll-behavior: smooth;    
 }
-body{
-    font-family: 'Merriweather', serif;
+:root{
+    --white: #fff;
+    --blue: rgb(52, 66, 255);
+    --darkblue: rgb(0, 29, 109);
+    --orange: rgb(255, 209, 6);
 }
+body{
+    font-family: 'Poppins', sans-serif;
+}
+/* main-image1.jpg */
 #main{
-    height: 120vh;
-    background-image: url('/assets/bcgr.png');
+    height: 70vh;
+    background-image: url('../assets/u4.svg');
     background-size: 100% 100%;
     background-repeat: no-repeat;
     background-position-y: center;
@@ -14,54 +21,146 @@ body{
     transition: all .2s ease-in;
 }
 .main-text{
-    margin-top: 10%;
+    margin-top: 5%;
 }
 .main-text p{
     font-size: 1.2rem;
     font-style: italic;
     margin-top: 3px;
+    color: var(--darkblue);
 }
 h1{
-    font-size: 1.9rem;
-    font-weight: 800;
+    font-size: 2rem;
+    font-weight: bold;
     letter-spacing: 2px;
+    color: var(--darkblue);
+    margin-top: 5%;
 }
 
 /* NAVBAR */
 .navbar{
-    background-color: rgb(119, 117, 117);
+    background-color: var(--white);
 
 }
-.nav-item .nav-link{
+.about-btn {
     font-weight: 500;
+    color: var(--darkblue);
 }
 .g-s{
-    border: 2px solid rgb(85, 85, 85);
-    background-color: rgb(85, 85, 85);
-    border-radius: 8px;
-    font-weight: 500;
+    font-weight: 300;
     font-size: 1.2rem;
-    color: #fff !important;
-    transition: all .3s ease-in;
+    color: var(--darkblue) !important;
+    border: 2px solid var(--darkblue);
+    transition: all .4s ease;
+    outline: none;
 }
 .g-s:hover{
-    border: 2px solid rgb(253, 253, 253);
-    background-color: rgb(255, 255, 255);
-    color: rgb(97, 97, 97) !important;
+    background: var(--darkblue);   
+    color: var(--white) !important;
 }
 
 /* FORMS */
+/* Register */
+.reg{
+    margin-top: 2rem;
+    border-radius: 5%;
+    background: var(--darkblue);
+    color: #fff;
+    /* height: 100vh; */
+}
+.reg h1{
+    color: var(--white);
+}
 form > input{
     background-color: rgba(0, 0, 0, .3)
 }
-.user_card{
-    /* background-color: rgba(46, 2, 24, 0.3); */
-    padding: 5%;
-}
+/* .user_card, .sign-up{
+    background-color: rgba(3, 1, 29, 0.699);
+    padding: 1% 0.5%;
+} */
 .t-sign-up {
     color: #fff;
 }
 .t-sign-up a{
     font-weight: bold;
     color: rgb(14, 15, 15)
+}
+
+
+/* TRACKER */
+#todo h2{
+    display: none;
+}
+#todoInput {
+    display: none;
+}
+ul.goals label, #goals span{
+    font-weight: 700;
+    background: orange;
+    padding: 20px;
+    margin: 5px;
+    display: list-item;
+    list-style-type: none;
+    cursor: pointer;
+    text-transform: uppercase;
+    overflow: initial;
+    text-overflow: initial;
+}
+#progress{
+    color: rgb(141, 13, 13);
+    font-family: cursive;
+    font-size: 3em;
+}
+label button{
+    float: right;
+    background: red;
+    border: none;
+    color: white;
+}
+
+
+/* ABOUT */
+.social-link {
+  width: 30px;
+  height: 30px;
+  border: 1px solid #ddd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #666;
+  border-radius: 50%;
+  transition: all 0.3s;
+  font-size: 0.9rem;
+}
+
+.social-link:hover,
+.social-link:focus {
+  background: #ddd;
+  text-decoration: none;
+  color: #555;
+}
+
+
+
+
+/* Media Queries */
+
+/* ABOUT */
+@media (max-width:320px) {
+    .topic{ 
+        font-size: 1.7rem;
+        font-weight: bolder;
+    }  
+    .text {
+        font-size: 1.1rem;
+    }
+    .row {
+        font-size: 1.5rem;
+    }
+
+    /* INDEX */
+    #main{
+        background: none;
+    }
+
 }

@@ -1,0 +1,29 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.juanito21.simpleshare" >
+4
+5    <uses-sdk android:minSdkVersion="19" />
+5-->C:\Program Files\flutter\.pub-cache\hosted\pub.dartlang.org\simple_share-0.0.1+4\android\src\main\AndroidManifest.xml
+6
+7    <application>
+7-->C:\Program Files\flutter\.pub-cache\hosted\pub.dartlang.org\simple_share-0.0.1+4\android\src\main\AndroidManifest.xml:4:5-15:19
+8        <provider
+8-->C:\Program Files\flutter\.pub-cache\hosted\pub.dartlang.org\simple_share-0.0.1+4\android\src\main\AndroidManifest.xml:5:9-13:20
+9            android:name="androidx.core.content.FileProvider"
+9-->C:\Program Files\flutter\.pub-cache\hosted\pub.dartlang.org\simple_share-0.0.1+4\android\src\main\AndroidManifest.xml:6:13-62
+10            android:authorities="dollar_openBracket_applicationId_closeBracket.adv_provider"
+10-->C:\Program Files\flutter\.pub-cache\hosted\pub.dartlang.org\simple_share-0.0.1+4\android\src\main\AndroidManifest.xml:7:13-64
+11            android:exported="false"
+11-->C:\Program Files\flutter\.pub-cache\hosted\pub.dartlang.org\simple_share-0.0.1+4\android\src\main\AndroidManifest.xml:8:13-37
+12            android:grantUriPermissions="true" >
+12-->C:\Program Files\flutter\.pub-cache\hosted\pub.dartlang.org\simple_share-0.0.1+4\android\src\main\AndroidManifest.xml:9:13-47
+13            <meta-data
+13-->C:\Program Files\flutter\.pub-cache\hosted\pub.dartlang.org\simple_share-0.0.1+4\android\src\main\AndroidManifest.xml:10:13-12:71
+14                android:name="android.support.FILE_PROVIDER_PATHS"
+14-->C:\Program Files\flutter\.pub-cache\hosted\pub.dartlang.org\simple_share-0.0.1+4\android\src\main\AndroidManifest.xml:11:17-67
+15                android:resource="@xml/simple_share_provider_paths" />
+15-->C:\Program Files\flutter\.pub-cache\hosted\pub.dartlang.org\simple_share-0.0.1+4\android\src\main\AndroidManifest.xml:12:17-68
+16        </provider>
+17    </application>
+18
+19</manifest>
