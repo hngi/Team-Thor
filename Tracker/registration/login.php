@@ -12,7 +12,7 @@
 	<link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
-	<div class="container-fuid mx-0">
+	<div class="container-fluid mx-0">
 		<nav class="navbar navbar-expand-lg container-fluid px-5">
 			<a class="navbar-brand" href="../index.html"><img src="../assets/logo.png" style= "width: 70px"></a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

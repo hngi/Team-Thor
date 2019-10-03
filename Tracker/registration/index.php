@@ -24,7 +24,7 @@
 </head>
 <body>
     <section>
-        <div class="container-fuid mx-0">
+        <div class="container-fluid mx-0">
           <nav class="navbar navbar-expand-lg navbar-light bg-light container-fluid px-5">
             <a class="navbar-brand" href="../index.html"><img src="../assets/logo.png
               " style= "width: 70px"></a>
