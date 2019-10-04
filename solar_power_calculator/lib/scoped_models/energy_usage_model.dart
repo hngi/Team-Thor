@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
 
 import '../models/energy_usage.dart';
@@ -8,8 +9,21 @@ class EnergyModel extends Model {
   int _selectedUsageIndex;
   double totalEnergyUsedPerDay = 0;
 
+  int get selectedUsageIndex {
+    return _selectedUsageIndex;
+  }
+
+  var equipmentController = TextEditingController();
+  var ratingController = TextEditingController();
+  var quantityController = TextEditingController();
+  var hoursController = TextEditingController();
+
   void selectIndex(int index) {
     _selectedUsageIndex = index;
+  }
+
+  EnergyUsage get selectedEnergyUsage {
+    return _usages[_selectedUsageIndex];
   }
 
   void addEnergyUsage(EnergyUsage usage) {
@@ -18,10 +32,12 @@ class EnergyModel extends Model {
 
   void updateEnergyUsage(EnergyUsage usage) {
     _usages[_selectedUsageIndex] = usage;
+    _selectedUsageIndex = null;
   }
 
   void deleteEnergyUsage(int index) {
     _usages.removeAt(index);
+    _selectedUsageIndex = null;
   }
 
   void calculateTotalEnergyUsedPerDay() {

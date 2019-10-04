@@ -69,8 +69,32 @@ class _EnergyConsumedPageState extends State<EnergyConsumedPage> {
                       ),
                     ),
               SizedBox(
-                height: 30,
+                height: 5,
               ),
+              model.usages.isEmpty
+                  ? SizedBox(
+                      height: 0,
+                    )
+                  : Container(
+                      margin: EdgeInsets.only(left: 24),
+                      alignment: Alignment.bottomLeft,
+                      child: Text(
+                        'Tap to edit, and hold to delete',
+                        textAlign: TextAlign.left,
+                        style: TextStyle(
+                            fontSize: 10,
+                            fontStyle: FontStyle.italic,
+                            fontWeight: FontWeight.w700,
+                            color: Color(0xFF5B5959)),
+                      ),
+                    ),
+              model.usages.isNotEmpty
+                  ? SizedBox(
+                      height: 5,
+                    )
+                  : SizedBox(
+                      height: 30,
+                    ),
               EnergyConsumedForm(update: update),
               SizedBox(
                 height: 20,

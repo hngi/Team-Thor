@@ -27,8 +27,9 @@ class _EnergyConsumedFormState extends State<EnergyConsumedForm> {
   final focusNodeQuantity = FocusNode();
   final focusNodeHours = FocusNode();
 
-  Widget _buildEquipmentField() {
+  Widget _buildEquipmentField(EnergyModel model) {
     return TextFormField(
+      controller: model.equipmentController,
       textInputAction: TextInputAction.next,
       onEditingComplete: () =>
           FocusScope.of(context).requestFocus(focusNodePower),
@@ -61,8 +62,9 @@ class _EnergyConsumedFormState extends State<EnergyConsumedForm> {
     );
   }
 
-  Widget _buildPowerRatingField() {
+  Widget _buildPowerRatingField(EnergyModel model) {
     return TextFormField(
+      controller: model.ratingController,
       focusNode: focusNodePower,
       onEditingComplete: () =>
           FocusScope.of(context).requestFocus(focusNodeQuantity),
@@ -93,13 +95,12 @@ class _EnergyConsumedFormState extends State<EnergyConsumedForm> {
         ),
       ),
       validator: (String value) {
-        if (!RegExp(r'^([.]\d+|\d+[.]?\d*)$').hasMatch(value) || double.parse(value) <= 0) {
+        if (!RegExp(r'^([.]\d+|\d+[.]?\d*)$').hasMatch(value) ||
+            double.parse(value) <= 0) {
           return 'Please enter a valid input';
-        }
-        else if(double.parse(value) > 9999) {
+        } else if (double.parse(value) > 9999) {
           return 'Please enter a value less than 10000';
-        }
-        else if(value.length > 6) {
+        } else if (value.length > 6) {
           return 'Please enter a value with a lesser decimal place';
         }
       },
@@ -109,8 +110,9 @@ class _EnergyConsumedFormState extends State<EnergyConsumedForm> {
     );
   }
 
-  Widget _buildQuantityField() {
+  Widget _buildQuantityField(EnergyModel model) {
     return TextFormField(
+      controller: model.quantityController,
       focusNode: focusNodeQuantity,
       onEditingComplete: () {
         FocusScope.of(context).requestFocus(focusNodeHours);
@@ -138,8 +140,7 @@ class _EnergyConsumedFormState extends State<EnergyConsumedForm> {
       validator: (String value) {
         if (!RegExp(r'^\d+$').hasMatch(value) || double.parse(value) <= 0) {
           return 'Please enter a valid input';
-        }
-        else if(int.parse(value) >= 100) {
+        } else if (int.parse(value) >= 100) {
           return 'Please enter a value less than 100';
         }
       },
@@ -149,8 +150,9 @@ class _EnergyConsumedFormState extends State<EnergyConsumedForm> {
     );
   }
 
-  Widget _buildHoursUsedField() {
+  Widget _buildHoursUsedField(EnergyModel model) {
     return TextFormField(
+      controller: model.hoursController,
       focusNode: focusNodeHours,
       style: TextStyle(
         fontSize: 16,
@@ -178,10 +180,10 @@ class _EnergyConsumedFormState extends State<EnergyConsumedForm> {
         ),
       ),
       validator: (String value) {
-        if (!RegExp(r'^([.]\d+|\d+[.]?\d*)$').hasMatch(value) || double.parse(value) <= 0) {
+        if (!RegExp(r'^([.]\d+|\d+[.]?\d*)$').hasMatch(value) ||
+            double.parse(value) <= 0) {
           return 'Please enter a valid input';
-        }
-        else if(double.parse(value) > 24) {
+        } else if (double.parse(value) > 24) {
           return 'Please enter a value less than or equal to 24';
         }
       },
@@ -198,18 +200,18 @@ class _EnergyConsumedFormState extends State<EnergyConsumedForm> {
           child: OutlineButton(
             onPressed: () {
               setState(() {
-                _submitForm(model.addEnergyUsage);
+                _submitForm(model);
                 widget.update();
               });
             },
             borderSide: BorderSide(color: Color(0xFF6737EF), width: 1),
-            padding: EdgeInsets.symmetric(vertical: 13, horizontal: 56),
+            padding: EdgeInsets.symmetric(vertical: 13, horizontal: 46),
             color: Color(0xFF6737EF),
             splashColor: Color(0xFF6737EF),
             shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
             child: Text(
-              'Add',
+              model.selectedUsageIndex == null ? 'Add' : 'Update',
               style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.w600,
@@ -258,17 +260,31 @@ class _EnergyConsumedFormState extends State<EnergyConsumedForm> {
     );
   }
 
-  void _submitForm(Function addEnergyUsage) {
+  void _submitForm(EnergyModel model) {
     if (_formKey.currentState.validate()) {
       _formKey.currentState.save();
       setState(() {
-        addEnergyUsage(
-          EnergyUsage(
-              equipment: _formData['Equipment'],
-              powerRating: _formData['Power Rating'],
-              quantity: _formData['Quantity'],
-              hoursUsedPerDay: _formData['Hours Used']),
-        );
+        if (model.selectedUsageIndex == null) {
+          model.addEnergyUsage(
+            EnergyUsage(
+                equipment: _formData['Equipment'],
+                powerRating: _formData['Power Rating'],
+                quantity: _formData['Quantity'],
+                hoursUsedPerDay: _formData['Hours Used']),
+          );
+        } else {
+          model.updateEnergyUsage(
+            EnergyUsage(
+                equipment: _formData['Equipment'],
+                powerRating: _formData['Power Rating'],
+                quantity: _formData['Quantity'],
+                hoursUsedPerDay: _formData['Hours Used']),
+          );
+        }
+        model.equipmentController.text = '';
+        model.ratingController.text = '';
+        model.quantityController.text = '';
+        model.hoursController.text = '';
       });
     }
   }
@@ -283,10 +299,10 @@ class _EnergyConsumedFormState extends State<EnergyConsumedForm> {
             key: _formKey,
             child: Column(
               children: <Widget>[
-                _buildEquipmentField(),
-                _buildPowerRatingField(),
-                _buildQuantityField(),
-                _buildHoursUsedField(),
+                _buildEquipmentField(model),
+                _buildPowerRatingField(model),
+                _buildQuantityField(model),
+                _buildHoursUsedField(model),
                 SizedBox(height: 60),
                 Container(
                   child: Row(

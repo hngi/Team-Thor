@@ -10,6 +10,10 @@ class ReportWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      constraints: BoxConstraints(
+        maxHeight: 140,
+        maxWidth: 160,
+      ),
       padding: EdgeInsets.only(left: 11),
       width: 150,
       height: 114,
@@ -43,8 +47,10 @@ class ReportWidget extends StatelessWidget {
                 color: Color(0xFF042C5C),
                 fontWeight: FontWeight.w700),
           ),
-          SizedBox(
-            height: 24,
+          Flexible(
+            child: SizedBox(
+              height: 24,
+            ),
           )
         ],
       ),
