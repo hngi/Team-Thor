@@ -17,9 +17,25 @@
 </head>
 
 <body>
+    <div class="container-fluid mx-0">
+        <nav class="navbar navbar-expand-lg  container-fluid px-5">
+          <a class="navbar-brand" href="index.html"><img src="./assets/logo.png" style= "width: 70px"></a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"><i class="fa fas fa-bars fa-2x"></i></span>
+          </button>
+        
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item mx-2">
+                <a class="nav-link about-btn" href="about-app.html">About App</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
     <div class="container">
-        <div class="row">
-            <div class="col-8">
+        <div class="row d-flex justify-content-center">
+            <div class="col-lg-7 col-md-8 col sm-12 reg px-3 py-3">
                 <h1>Contact Us!</h1>
                 <p>Please fill out this form...</p>
                 <form id="contact-form" method="post" action="contact.php" role="form">
@@ -51,7 +67,7 @@
                             </div>
                         </div>
                         <div class="row d-flex justify-content-center align-items-center">
-                            <div class="col-12">
+                            <div class="col-6">
                                 <div class="form-group">
                                     <label for="form_message">Message *</label>
                                     <textarea id="form_message" name="message" class="form-control"
@@ -83,7 +99,7 @@
         crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.9/validator.min.js"
         integrity="sha256-dHf/YjH1A4tewEsKUSmNnV05DDbfGN3g7NMq86xgGh8=" crossorigin="anonymous"></script>
-    <script src="contact.js"></script>
+    <script src="js/contact.js"></script>
 </body>
 
 </html>
