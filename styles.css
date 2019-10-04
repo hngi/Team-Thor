@@ -1,0 +1,101 @@
+*{
+    box-sizing: border-box;
+}
+
+ /* Table */
+table{
+    height: 100%;
+    width: 100%;
+    margin: 2%;
+    padding: 2%;
+ }
+ h1{
+     text-align: center;
+     color: #512c96;
+ }
+
+ .basic{
+   border: 1px solid #8105d8;
+   padding: 5%;
+  line-height: 2rem;
+ }
+ .standard{
+   border: 1px solid #ed0cef;
+   padding: 5%;
+   line-height: 2rem;
+ }
+ .premium{
+  border: 1px solid #3b064d; 
+  padding: 5%;
+  line-height: 2rem;
+   
+ }
+ .basic-head{
+   background-color: #8105d8;  
+   text-align: center;
+   color: white;
+ }
+ .standard-head{
+   background-color: #ed0cef;
+   text-align: center;
+   color: white;
+ }
+ .premium-head{
+   background-color: #3b064d; 
+   text-align: center;
+   color: white;
+   
+ }
+
+ span{
+   font-weight: bold;
+   font-size: 1.5em;
+
+ }
+ li{
+     list-style-type: none;
+ }
+/* Buttons */
+ .basic-button{
+   background-color: #8105d8;
+   text-align: center;
+   width: 40%;
+  color: white;
+  margin: 2% 2% 2% 20%;
+  padding: 2%;
+ }
+ .standard-button{
+   background-color: #ed0cef;
+   text-align: center;
+   width: 40%;
+  color: white;
+  margin: 2% 2% 2% 20%;
+  padding: 2%;
+ }
+ .premium-button{
+   background-color:#3b064d;
+   text-align: center;
+   width: 40%;
+     color: white;
+   margin: 2% 2% 2% 20%;
+   padding: 2%;
+ }
+ .basic-button:hover{
+    background-color: white;
+     border: 1px solid #8105d8;
+     color: black;
+     
+ }
+ .standard-button:hover{
+    background-color: white;
+     border: 1px solid #ed0cef;
+     color: black;
+     
+ }
+ .premium-button:hover{
+    background-color: white;
+     border: 1px solid #3b064d;
+     color: black;
+     
+ } 
+ 
