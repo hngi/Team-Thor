@@ -1,45 +1,60 @@
-var addBtn = document.getElementById('add-btn');
-var addTask = document.getElementById('add-goal')
-var addGoal = document.getElementById('add-goal')
-var todo = document.getElementById('todo')
-var ulTasks = document.getElementById('task');
-var ulGoals = document.getElementById('goals');
-var goalInput = document.getElementById('goal-input');
-var goalList = document.getElementsByClassName('goal-list');
-var progressSpan = document.getElementById('progress')
-var todoForm = document.getElementById("todoForm");
-var todoInput = document.getElementById('todoInput');
-var currentTask = document.getElementById('current-task');
-var todoBtn = document.getElementById('todoBtn');
+const addBtn = document.querySelector("#add-btn")
+const addTask = document.querySelector("#add-task")
+const addGoal = document.querySelector("#add-goal")
+const todo = document.querySelector("#todo")
+const ulTasks = document.querySelector('#task');
+const ulGoals = document.querySelector('#goals');
+const goalInput = document.querySelector('#goal-input');
+const goalList = document.querySelectorAll('.goal-list');
+const progressSpan = document.querySelector('#progress')
+const todoForm = document.querySelector("#todoForm");
+const todoInput = document.querySelector('#todoInput');
+const currentTask = document.querySelector('#current-task');
+const spanElement = document.querySelector("div .todo")
+const deleteBtn = document.querySelector("#delete-goal")
+let goals = []
 
-class goal {
-    constructor(id, goalItem, todos) {
+window.addEventListener('load', function(){
+    var gitems = JSON.parse(localStorage.getItem('Goals'))
+    for(i=0; i<gitems.length; i++){
+        goalIndex++;
+        let tasks = []
+        let newGoal = new Goal(`goal${goalIndex}`, gitems[i], tasks)
+        const addTask = document.createElement('span');
+        addTask.innerText = newGoal.goalItem;
+        ulGoals.append(addTask);
+        goals.push(newGoal);
+    }
+    console.log(gitems.length);
+})
+
+class Goal {
+    constructor(id, goalItem, todos, selected=false) {
     this.id = id;
     this.goalItem = goalItem;
-    this.todos = todos
+    this.todos = todos;
+    this.selected = selected
     }
 }
-
-// Document Raedy
-document.addEventListener('DOMContentLoaded', getFromLocalStorage)
-
-var i = 0;
-var goalIndex = 0
+let j = 0;
+let goalIndex = 0
 let checked = 0
 let percentage = 0
-// let newGoal = new goal(`goal[i]`, goalInput.value)
-addGoal.addEventListener('click', () => {
-    if (goalInput.value==""){
+
+addGoal.addEventListener("click", () => {
+    if(goalInput.value == ""){
         alert("Enter a goal")
-    }
-    else {
-        const li = document.createElement('li')
-        const addTask = document.createElement('span')
-        li.append(addTask)
-        addTask.innerText = goalInput.value
-        ulGoals.appendChild(addTask)
-        
-        // save in local storage
+    } else {
+        console.log(j)
+        goalIndex++;
+        let tasks = []
+        let newGoal = new Goal(`goal${goalIndex}`, goalInput.value, tasks)
+        const addTask = document.createElement('span');
+        addTask.innerText = newGoal.goalItem;
+        ulGoals.append(addTask);
+        goals.push(newGoal);
+
+            // save in local storage
         function getGoalFromLS() {
             let inputGoals
             const goalFromLS = localStorage.getItem('Goals')
@@ -50,99 +65,175 @@ addGoal.addEventListener('click', () => {
             }
             return inputGoals
         }       
-
-        
-
         (function saveinLS (inputGoal) {
             let inputGoals = getGoalFromLS()
+            inputGoals.push(inputGoal)
+            localStorage.setItem('Goals', JSON.stringify(inputGoals))
+        })(goalInput.value)
     
+        const allGoals = ulGoals.querySelectorAll("span");
+        allGoals.forEach(goalss => {
+            goalss.addEventListener("click", () => {
+                todoForm.style.display = "block"
+                for(i=0; i<allGoals.length; i++){
+                    allGoals[i].removeAttribute("class")
+                    goals[i].selected = false;
+                }
+                todoInput.style.display = "block";
+                goalss.setAttribute("class", "selected")
+                for(i=0; i<allGoals.length; i++){
+                    if(allGoals[i].hasAttribute("class")){
+                        goals[i].selected = true
+                    }
+                }
+                const labelElement = ulTasks.querySelectorAll("label")
+                labelElement.forEach(label => {
+                    label.remove()
+                })
+                percentage = 0
+                checked = 0
+                progressSpan.innerHTML = `${percentage}%`
+                goals.forEach(selectedGoal => {
+                    if(selectedGoal.selected){
+                        j = selectedGoal.todos.length
+                        currentTask.style.display = 'block';
+                        currentTask.innerText = `These are your goals for ${selectedGoal.goalItem}`
+                        selectedGoal.todos.forEach(goal => {
+                            const label = document.createElement("label")
+                            const input = document.createElement("input");
+                            const del =  document.createElement("button");
+                            del.innerText = 'delete'
+                            input.setAttribute("type", "checkbox")
+                            input.setAttribute("value", todoInput.value)
+                            input.setAttribute("class", "goal-list");
+                            label.appendChild(input)
+                            label.appendChild(document.createTextNode(goal))
+                            label.appendChild(del)
+                            ulTasks.appendChild(label);
+                            todoInput.value = "";
+                            del.addEventListener('click', () => {
+                                j--;
+                                label.remove()
+                                if(input.checked){
+                                    checked--;
+                                }
+                                percentage = Math.round((checked/j) * 100)
+                                if(isNaN(percentage)){
+                                    percentage = 0
+                                }
+                                progressSpan.innerHTML = `${percentage}%`    
+                            })
+                            input.addEventListener('click', () => {
+                                if (input.checked){
+                                    checked++;
+
+                                } else {
+                                    checked--
+                                }
+                                percentage =  Math.round((checked/j) * 100)
+                                if(percentage === NaN) percentage = 0
+                                progressSpan.innerHTML = `${percentage}%`      
+                            })
+                            // percentage = Math.round((checked/j) * 100)
+                            progressSpan.innerHTML = `${percentage}%`
+                        })
+                    }
+                })
+
+            })
+        })
+        todoForm.addEventListener("submit", () => {
+            event.preventDefault()
+            if(todoInput.value == ""){
+                todoInput.value = ""
+            } else {
+                j++;
+                goals.forEach(goal => {
+                    if(goal.selected){
+                        i++;
+                        goal.todos.push(todoInput.value)
+                        const label = document.createElement("label")
+                        const input = document.createElement("input");
+                        const del =  document.createElement("button");
+                        del.innerText = 'delete'
+                        input.setAttribute("type", "checkbox")
+                        input.setAttribute("value", todoInput.value)
+                        input.setAttribute("class", "goal-list");
+                        label.appendChild(input)
+                        label.appendChild(document.createTextNode(todoInput.value))
+                        label.appendChild(del)
+                        ulTasks.appendChild(label);
+                        todoInput.value = "";
+                
+                        del.addEventListener('click', () => {
+                            j--;
+                            label.remove()
+                            if(input.checked){
+                                checked--;
+                            }
+                            percentage = Math.round((checked/i) * 100)
+                            if(isNaN(percentage)){
+                                percentage = 0
+                            }
+                            progressSpan.innerHTML = `${percentage}%`
+                            
+                        })
+                        input.addEventListener('click', () => {
+                            if (input.checked){
+                                checked++;
+                                label.style.textDecoration = "line-through";
+                            } else {
+                                checked--
+                                label.style.textDecoration = "none";
+                            }
+                            percentage =  Math.round((checked/j) * 100)
+                            if(percentage === NaN) percentage = 0
+                            progressSpan.innerHTML = `${percentage}%`
+                            
+                        })
+                        percentage = Math.round((checked/j) * 100)
+                        if(isNaN(percentage)){
+                            percentage = 0
+                        }
+                        progressSpan.innerHTML = `${percentage}%`
+                    }
+                })
+            }
+        })
+        goalInput.value = "";
+        
+    }
+
+})
+deleteBtn.addEventListener("click", () => {
+    goals = []
+    const allGoals = ulGoals.querySelectorAll("span")
+    allGoals.forEach(goals => {
+        goals.remove()
+    })
+    const allTasks = ulTasks.querySelectorAll("label")
+    allTasks.forEach(task => {
+        task.remove()
+    })
+    localStorage.removeItem("Goals")
+    progressSpan.innerHTML = ""
+    todoForm.style.display = "none"
+    currentTask.style.display = "none"
+})
+
+         
+        (function saveinLS (inputGoal) {
+            let inputGoals = getGoalFromLS()
             inputGoals.push(inputGoal)
             localStorage.setItem('Goals', JSON.stringify(inputGoals))
         })(goalInput.value)
 
-          // Clear Input Goal
-          goalInput.value = '';
-
-
-        addTask.addEventListener("click", () => {
-            goalIndex++;
-            let newTask = new goal(`goal${goalIndex}`, goalInput.value)
-            var goals = []
-            goals.push(newTask)            
-
-            todoInput.style.display = "block";
-            todoBtn.classList.remove('d-none');
-            currentTask.innerText = `These are your To do lists for: ${addTask.innerText}` 
-
-            
-        })
-    }
-})
-
-
-
-todoForm.addEventListener("submit", () => {
-    event.preventDefault()
-    if (todoInput.value==""){
-        alert("Enter a task")
-    }
-    else{
-        console.log(todoForm)
-        i++;
-        const label = document.createElement("label")
-        const input = document.createElement("input");
-        const del =  document.createElement("button");
-        del.innerText = 'delete'
-        input.setAttribute("type", "checkbox")
-        input.setAttribute("value", todoInput.value)
-        input.setAttribute("class", "goal-list");
-        label.setAttribute("class", "label");
-        label.appendChild(input)
-        label.appendChild(document.createTextNode(todoInput.value))
-        label.appendChild(del)
-        ulTasks.appendChild(label);
-        todoInput.value = "";
-
-        del.addEventListener('click', () => {
-            i--;
-            label.remove()
-            if(input.checked){
-                checked--;
-            }
-            percentage = Math.round((checked/i) * 100)
-            if(isNaN(percentage)){
-                percentage = 0
-            }
-            progressSpan.innerHTML = `${percentage}%`
-            
-        })
-        input.addEventListener('click', () => {
-            if (input.checked){
-                checked++;
-            } else {
-                checked--
-            }
-            percentage =  Math.round((checked/i) * 100)
-            if(percentage === NaN) percentage = 0
-            progressSpan.innerHTML = `${percentage}%`
-            
-        })
-        percentage = Math.round((checked/i) * 100)
-        progressSpan.innerHTML = `${percentage}%`
-    }
-}) 
-
-// save in local storage
-function getGoalFromLS() {
-    let inputGoals
-    const goalFromLS = localStorage.getItem('Goals')
-    if (goalFromLS === null) {
-        inputGoals = []
-    } else {
-        inputGoals = JSON.parse(goalFromLS)
-    }
-    return inputGoals
-} 
+        
+        // (function copyfromLS () {
+        //     var gitems = JSON.parse(localStorage.getItem('Goals').value)
+        //     console.log(gitems);
+        // })()
+    
 
 // Loads when document is ready and print courses into shopping cart
 function getFromLocalStorage() {
@@ -157,6 +248,3 @@ function getFromLocalStorage() {
         ulGoals.appendChild(addTask)
     });
 }
-
-
-
