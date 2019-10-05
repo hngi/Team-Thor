@@ -93,7 +93,7 @@ form > input{
 
 @media(max-width: 360px ){
    .navbar-brand{
-       font-size: 10px
+       font-size: 10px;
    }
    .navbar-brand img{
        height: 50px;
